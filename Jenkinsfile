@@ -13,5 +13,17 @@ pipeline {
                 sh 'ls -la'
             }
         }
+        stage('Publish HTML') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'public',
+                    reportFiles: 'f.html',
+                    reportName: 'F HTML'
+                ])
+            }
+        }
     }
 }
